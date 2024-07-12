@@ -57,6 +57,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public List<ResumeBuilderDTO> getAllUsers() {
 		List<ResumeBuilder> all = resumeBuilderRepository.findAll();
 		List<ResumeBuilderDTO> resumeBuilderDTOs = all.stream().map(resumeBuildObj -> {
@@ -119,6 +120,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO findById(Long id) {
 		ResumeBuilder resumeBuildObj = resumeBuilderRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Resume not found"));
@@ -270,6 +272,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO updateResume(long id, ResumeBuilderDTO resumeBuilderDTO) {
 		// Find existing ResumeBuilder entity
 		ResumeBuilder existingResumeBuilder = resumeBuilderRepository.findById(id)
