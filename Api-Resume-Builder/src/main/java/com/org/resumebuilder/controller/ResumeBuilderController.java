@@ -47,7 +47,7 @@ public class ResumeBuilderController {
 		return ResponseEntity.ok(updatedResume);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/deleteResume/{id}")
 	public void deleteResumeBuilder(@PathVariable Long id) {
 		resumeBuilderService.deleteResumeBuilder(id);
 	}
