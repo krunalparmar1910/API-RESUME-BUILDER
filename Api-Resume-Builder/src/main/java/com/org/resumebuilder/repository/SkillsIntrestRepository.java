@@ -12,4 +12,6 @@ public interface SkillsIntrestRepository extends JpaRepository<SkillsIntrest, In
 
 	Optional<SkillsIntrest> findById(Long id);
 
+	void deleteByResumeBuilderId(Long id);
+
 }

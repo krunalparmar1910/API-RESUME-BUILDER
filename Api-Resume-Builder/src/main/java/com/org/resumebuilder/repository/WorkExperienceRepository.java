@@ -12,4 +12,6 @@ public interface WorkExperienceRepository extends JpaRepository<WorkExperience, 
 
 	Optional<WorkExperience> findById(Long id);
 
+	void deleteByResumeBuilderId(Long id);
+
 }

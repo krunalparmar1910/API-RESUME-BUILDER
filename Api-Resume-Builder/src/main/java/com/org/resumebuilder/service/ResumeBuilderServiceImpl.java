@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.org.resumebuilder.dto.CertificateDTO;
 import com.org.resumebuilder.dto.EducationDTO;
@@ -56,6 +57,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public List<ResumeBuilderDTO> getAllUsers() {
 		List<ResumeBuilder> all = resumeBuilderRepository.findAll();
 		List<ResumeBuilderDTO> resumeBuilderDTOs = all.stream().map(resumeBuildObj -> {
@@ -118,6 +120,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO findById(Long id) {
 		ResumeBuilder resumeBuildObj = resumeBuilderRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Resume not found"));
@@ -269,6 +272,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO updateResume(long id, ResumeBuilderDTO resumeBuilderDTO) {
 		// Find existing ResumeBuilder entity
 		ResumeBuilder existingResumeBuilder = resumeBuilderRepository.findById(id)
@@ -372,7 +376,14 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 
 	/* Delete Resume By Id *****/
 	@Override
+	@Transactional
 	public void deleteResumeBuilder(Long id) {
+		certificateRepository.deleteByResumeBuilderId(id);
+		educationRepository.deleteByResumeBuilderId(id);
+		projectRepository.deleteByResumeBuilderId(id);
+		skillsIntrestRepository.deleteByResumeBuilderId(id);
+		workExperienceRepository.deleteByResumeBuilderId(id);
+		// Delete the resume builder
 		resumeBuilderRepository.deleteById(id);
 	}
 
