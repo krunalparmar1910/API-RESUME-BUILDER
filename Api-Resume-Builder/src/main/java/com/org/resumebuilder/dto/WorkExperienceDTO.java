@@ -1,7 +1,5 @@
 package com.org.resumebuilder.dto;
 
-import java.sql.Date;
-
 public class WorkExperienceDTO {
 
 	private int id;

@@ -18,6 +18,7 @@ public interface IResumeBuilderService {
 	// update Resume Builder Data
 	ResumeBuilderDTO updateResume(long id, ResumeBuilderDTO resumeBuilderDTO);
 
+	// delete by id resume builder data
 	void deleteResumeBuilder(Long id);
 
 }

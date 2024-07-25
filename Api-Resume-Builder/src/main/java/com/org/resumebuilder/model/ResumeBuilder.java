@@ -51,7 +51,7 @@ public class ResumeBuilder {
 	private List<Project> project;
 
 	@OneToMany(mappedBy = "resumeBuilder")
-	private List<SkillsIntrest> skillsIntrest;
+	private List<SkillsInterest> skillsInterest;
 
 	@OneToMany(mappedBy = "resumeBuilder")
 	private List<WorkExperience> workExperience;
@@ -144,12 +144,12 @@ public class ResumeBuilder {
 		this.project = project;
 	}
 
-	public List<SkillsIntrest> getSkillsIntrest() {
-		return skillsIntrest;
+	public List<SkillsInterest> getSkillsInterest() {
+		return skillsInterest;
 	}
 
-	public void setSkillsIntrest(List<SkillsIntrest> skillsIntrest) {
-		this.skillsIntrest = skillsIntrest;
+	public void setSkillsInterest(List<SkillsInterest> skillsInterest) {
+		this.skillsInterest = skillsInterest;
 	}
 
 	public List<WorkExperience> getWorkExperience() {

@@ -21,35 +21,35 @@ import com.org.resumebuilder.service.IResumeBuilderService;
 public class ResumeBuilderController {
 
 	@Autowired
-	private IResumeBuilderService resumeBuilderService;
+	private IResumeBuilderService iResumeBuilderService;
 
 	@GetMapping("/getResumes")
 	public List<ResumeBuilderDTO> getAllUsers() {
-		return resumeBuilderService.getAllUsers();
+		return iResumeBuilderService.getAllUsers();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("resumeById/{id}")
 	public ResponseEntity<ResumeBuilderDTO> getResumeById(@PathVariable Long id) {
-		ResumeBuilderDTO resumeOptional = resumeBuilderService.findById(id);
+		ResumeBuilderDTO resumeOptional = iResumeBuilderService.findById(id);
 		return new ResponseEntity<>(resumeOptional, HttpStatus.OK);
 	}
 
 	@PostMapping("/addResume")
 	public ResponseEntity<ResumeBuilderDTO> createResume(@RequestBody ResumeBuilderDTO resumeBuilderDTO) {
-		ResumeBuilderDTO savedResume = resumeBuilderService.saveResume(resumeBuilderDTO);
+		ResumeBuilderDTO savedResume = iResumeBuilderService.saveResume(resumeBuilderDTO);
 		return ResponseEntity.ok(savedResume);
 	}
 
 	@PutMapping("/updateResume/{id}")
 	public ResponseEntity<ResumeBuilderDTO> updateResume(@PathVariable long id,
 			@RequestBody ResumeBuilderDTO resumeBuilderDTO) {
-		ResumeBuilderDTO updatedResume = resumeBuilderService.updateResume(id, resumeBuilderDTO);
+		ResumeBuilderDTO updatedResume = iResumeBuilderService.updateResume(id, resumeBuilderDTO);
 		return ResponseEntity.ok(updatedResume);
 	}
 
 	@DeleteMapping("/deleteResume/{id}")
 	public void deleteResumeBuilder(@PathVariable Long id) {
-		resumeBuilderService.deleteResumeBuilder(id);
+		iResumeBuilderService.deleteResumeBuilder(id);
 	}
 
 }

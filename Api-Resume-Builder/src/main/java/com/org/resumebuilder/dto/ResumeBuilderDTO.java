@@ -26,7 +26,7 @@ public class ResumeBuilderDTO {
 
 	private List<ProjectDTO> projectDTO;
 
-	private List<SkillsIntrestDTO> skillsIntrestDTO;
+	private List<SkillsInterestDTO> SkillsInterestDTO;
 
 	private List<WorkExperienceDTO> workExperienceDTO;
 
@@ -118,12 +118,12 @@ public class ResumeBuilderDTO {
 		this.projectDTO = projectDTO;
 	}
 
-	public List<SkillsIntrestDTO> getSkillsIntrestDTO() {
-		return skillsIntrestDTO;
+	public List<SkillsInterestDTO> getSkillsInterestDTO() {
+		return SkillsInterestDTO;
 	}
 
-	public void setSkillsIntrestDTO(List<SkillsIntrestDTO> skillsIntrestDTO) {
-		this.skillsIntrestDTO = skillsIntrestDTO;
+	public void setSkillsInterestDTO(List<SkillsInterestDTO> SkillsInterestDTO) {
+		this.SkillsInterestDTO = SkillsInterestDTO;
 	}
 
 	public List<WorkExperienceDTO> getWorkExperienceDTO() {
