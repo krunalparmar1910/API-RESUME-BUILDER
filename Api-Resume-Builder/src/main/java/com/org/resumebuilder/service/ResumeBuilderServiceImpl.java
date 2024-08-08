@@ -144,11 +144,11 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 				.collect(Collectors.toList());
 		resumeBuilderDTO.setCertificateDTO(certificateDTOs);
 
-		// SkillsInterest entities to SkillsInterestDTOs
+		// Skills & Interest entities to SkillsInterestDTOs
 		List<SkillsInterestDTO> skillsInterestDTOs = resumeBuildObj.getSkillsInterest().stream()
 				.map(a -> skillsInterestRepository.findById(a.getId())
 						.map(skillsInterest -> modelMapper.map(skillsInterest, SkillsInterestDTO.class))
-						.orElseThrow(() -> new RuntimeException("SkillsIntrest not found")))
+						.orElseThrow(() -> new RuntimeException("Skills and Interest not found")))
 				.collect(Collectors.toList());
 		resumeBuilderDTO.setSkillsInterestDTO(skillsInterestDTOs);
 
@@ -156,7 +156,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		List<WorkExperienceDTO> workExperienceDTOs = resumeBuildObj.getWorkExperience().stream()
 				.map(a -> workExperienceRepository.findById(a.getId())
 						.map(workExperience -> modelMapper.map(workExperience, WorkExperienceDTO.class))
-						.orElseThrow(() -> new RuntimeException("WorkExperience not found")))
+						.orElseThrow(() -> new RuntimeException("Work Experience not found")))
 				.collect(Collectors.toList());
 		resumeBuilderDTO.setWorkExperienceDTO(workExperienceDTOs);
 

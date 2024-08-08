@@ -86,7 +86,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9091/api/resumeBuilder/resumeById/1",
+					"raw": "http://localhost:9091/api/resumeBuilder/resumeById/68",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -96,7 +96,7 @@
 						"api",
 						"resumeBuilder",
 						"resumeById",
-						"1"
+						"68"
 					]
 				}
 			},
@@ -244,7 +244,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Prit Rathod\",\r\n    \"email\": \"prit.r@example.com\",\r\n    \"phone\": \"+91 9874563221\",\r\n    \"address\": \"Ahmedabad\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"I am a full stack Java Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"id\": 2,\r\n            \"instituteName\": \"government polytechnic Gandhinagar\",\r\n            \"degree\": \"IIT\",\r\n            \"degStartDate\": \"2024-06-24\",\r\n            \"degEndDate\": \"2024-06-24\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"id\": 2,\r\n            \"certificateTitle\": \"IOS Developer\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"id\": 2,\r\n            \"projectTitle\": \"Hotel Management\",\r\n            \"projectDescription\": \"details of employee and manage the employee leaves and attendance sysytem\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"id\": 2,\r\n            \"skills\": \"Spring Boot\",\r\n            \"interest\": \"programming\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"id\": 2,\r\n            \"designation\": \"Sr. Software Develioper\",\r\n            \"companyName\": \"TCS\",\r\n            \"comStartDate\":\"2024-06-24\",\r\n            \"comEndDate\": \"2024-06-24\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"id\": 70,\r\n    \"name\": \"Deep Chavda\",\r\n    \"email\": \"deep.c@example.com\",\r\n    \"phone\": \"+91 9842358122\",\r\n    \"address\": \"Jesar\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"Mearn Full Stack Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"id\": 91,\r\n            \"instituteName\": \"GEC Ahmedabad\",\r\n            \"degree\": \"BE\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        },\r\n        {\r\n            \"id\": 92,\r\n            \"instituteName\": \"GPG\",\r\n            \"degree\": \"Dimploma in computer enginnering\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"id\": 111,\r\n            \"certificateTitle\": \"Full Stack Web Development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 112,\r\n            \"certificateTitle\": \"php web development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 113,\r\n            \"certificateTitle\": \"cloud computing\",\r\n            \"issuingOrg\": \"Edx\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"id\": 93,\r\n            \"projectTitle\": \"Shoes-ware Web Application\",\r\n            \"projectDescription\": \"provide all information of Shoes-ware.\"\r\n        },\r\n        {\r\n            \"id\": 94,\r\n            \"projectTitle\": \"Payroll Management\",\r\n            \"projectDescription\": \"provide all employee Details information\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"id\": 92,\r\n            \"designation\": \"Full Stack Developer\",\r\n            \"companyName\": \"Infosys\",\r\n            \"comStartDate\": \"2023-01-12\",\r\n            \"comEndDate\": \"2024-06-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        },\r\n        {\r\n            \"id\": 93,\r\n            \"designation\": \"Team Lead Full Stack Developer\",\r\n            \"companyName\": \"Microsoft\",\r\n            \"comStartDate\": \"2024-06-12\",\r\n            \"comEndDate\": \"2024-07-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"id\": 86,\r\n            \"skills\": \"PHP\",\r\n            \"interest\": \"cricket\"\r\n        },\r\n        {\r\n            \"id\": 87,\r\n            \"skills\": \"JAVA\",\r\n            \"interest\": \"movies\"\r\n        },\r\n        {\r\n            \"id\": 88,\r\n            \"skills\": \"React JS\",\r\n            \"interest\": \"travelling\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,7 +252,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9091/api/resumeBuilder/updateResume/2",
+					"raw": "http://localhost:9091/api/resumeBuilder/updateResume/70",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -262,7 +262,7 @@
 						"api",
 						"resumeBuilder",
 						"updateResume",
-						"2"
+						"70"
 					]
 				}
 			},
@@ -329,6 +329,21 @@
 		{
 			"name": "DELETE RESUME BY ID",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "#KP2024",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Krunal Parmar",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
@@ -392,6 +407,66 @@
 					"body": null
 				}
 			]
+		},
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"krunal\",\r\n    \"password\": \"admin\",\r\n    \"mobile\": \"1234567890\",\r\n    \"email\": \"krunal@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"krunal\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

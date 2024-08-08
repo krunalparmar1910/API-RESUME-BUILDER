@@ -1,5 +1,0 @@
-# Created at 2024-07-19T11:17:09.269
-Boot Manifest-JAR contains absolute paths in classpath 'D:\Krunal Parmar\Workspace\JAVA PROJECTS\Api-Resume-Builder\Resume-Builder\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
