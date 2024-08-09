@@ -8,6 +8,7 @@ public interface IResumeBuilderService {
 
 	// get list of resume data
 	List<ResumeBuilderDTO> getAllUsers();
+//	List<ResumeBuilderDTO> getAllResumes();
 
 	// get resume by id
 	ResumeBuilderDTO findById(Long id);
@@ -20,5 +21,6 @@ public interface IResumeBuilderService {
 
 	// delete by id resume builder data
 	void deleteResumeBuilder(Long id);
+
 
 }

@@ -1,17 +1,11 @@
 package com.org.resumebuilder.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.org.resumebuilder.dto.ResumeBuilderDTO;
 import com.org.resumebuilder.service.IResumeBuilderService;
@@ -24,14 +18,14 @@ public class ResumeBuilderController {
 	private IResumeBuilderService iResumeBuilderService;
 
 	@GetMapping("/getResumes")
-	public List<ResumeBuilderDTO> getAllUsers() {
+	public List<ResumeBuilderDTO> getAllResumes() {
 		return iResumeBuilderService.getAllUsers();
 	}
 
-	@GetMapping("resumeById/{id}")
+	@GetMapping("/resumeById/{id}")
 	public ResponseEntity<ResumeBuilderDTO> getResumeById(@PathVariable Long id) {
-		ResumeBuilderDTO resumeOptional = iResumeBuilderService.findById(id);
-		return new ResponseEntity<>(resumeOptional, HttpStatus.OK);
+		ResumeBuilderDTO resume = iResumeBuilderService.findById(id);
+		return new ResponseEntity<>(resume, HttpStatus.OK);
 	}
 
 	@PostMapping("/addResume")
@@ -48,8 +42,8 @@ public class ResumeBuilderController {
 	}
 
 	@DeleteMapping("/deleteResume/{id}")
-	public void deleteResumeBuilder(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteResume(@PathVariable Long id) {
 		iResumeBuilderService.deleteResumeBuilder(id);
+		return ResponseEntity.noContent().build();
 	}
-
 }
