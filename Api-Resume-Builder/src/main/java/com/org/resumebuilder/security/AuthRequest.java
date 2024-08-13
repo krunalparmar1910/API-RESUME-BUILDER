@@ -1,7 +1,10 @@
 package com.org.resumebuilder.security;
 
-public class AuthRequest {
+import jakarta.validation.constraints.Pattern;
 
+public class AuthRequest {
+	
+	@Pattern(regexp = "")
 	private String username;
 
 	private String password;

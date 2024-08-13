@@ -123,7 +123,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	@Transactional
 	public ResumeBuilderDTO findById(Long id) {
 		ResumeBuilder resumeBuildObj = resumeBuilderRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Resume not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Resume not found"));
 
 		// Map ResumeBuilder to ResumeBuilderDTO
 		ResumeBuilderDTO resumeBuilderDTO = modelMapper.map(resumeBuildObj, ResumeBuilderDTO.class);
@@ -286,7 +286,8 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		List<CertificateDTO> listOfCertificates = updateCertificates(resumeBuilderDTO.getCertificateDTO(), id);
 		List<EducationDTO> listOfEducations = updateEducations(resumeBuilderDTO.getEducationDTO(), id);
 		List<ProjectDTO> listOfProjects = updateProjects(resumeBuilderDTO.getProjectDTO(), id);
-		List<SkillsInterestDTO> listOfSkillsInterests = updateSkillsInterests(resumeBuilderDTO.getSkillsInterestDTO(), id);
+		List<SkillsInterestDTO> listOfSkillsInterests = updateSkillsInterests(resumeBuilderDTO.getSkillsInterestDTO(),
+				id);
 		List<WorkExperienceDTO> listOfWorkExperiences = updateWorkExperiences(resumeBuilderDTO.getWorkExperienceDTO(),
 				id);
 
@@ -378,13 +379,17 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	@Override
 	@Transactional
 	public void deleteResumeBuilder(Long id) {
-		certificateRepository.deleteByResumeBuilderId(id);
-		educationRepository.deleteByResumeBuilderId(id);
-		projectRepository.deleteByResumeBuilderId(id);
-		skillsInterestRepository.deleteByResumeBuilderId(id);
-		workExperienceRepository.deleteByResumeBuilderId(id);
-		// Delete the resume builder
-		resumeBuilderRepository.deleteById(id);
+		if (!resumeBuilderRepository.existsById(id)) {
+			throw new ResourceNotFoundException("Resume not found with id " + id);
+		} else {
+			certificateRepository.deleteByResumeBuilderId(id);
+			educationRepository.deleteByResumeBuilderId(id);
+			projectRepository.deleteByResumeBuilderId(id);
+			skillsInterestRepository.deleteByResumeBuilderId(id);
+			workExperienceRepository.deleteByResumeBuilderId(id);
+			// Delete the resume builder
+			resumeBuilderRepository.deleteById(id);
+		}
 	}
 
 }

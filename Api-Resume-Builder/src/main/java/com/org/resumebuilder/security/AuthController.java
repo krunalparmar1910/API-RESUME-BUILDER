@@ -25,7 +25,7 @@ public class AuthController {
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	private JwtUtil jwtUtil;
+	private JwtTokenUtil jwtTokenUtil;
 
 	@Autowired
 	private UserService userService;
@@ -36,7 +36,7 @@ public class AuthController {
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody LoginUser user) {
 		try {
-			String message = userService.registerUser(user);
+			LoginUser message = userService.registerUser(user);
 			return ResponseEntity.status(HttpStatus.CREATED).body(message);
 		} catch (UserAlreadyExistsException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
@@ -52,7 +52,7 @@ public class AuthController {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 			final UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
-			final String jwt = jwtUtil.generateToken(userDetails);
+			final String jwt = jwtTokenUtil.generateToken(userDetails);
 			return ResponseEntity.ok(new AuthResponse(jwt));
 		} catch (BadCredentialsException e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect username or password");

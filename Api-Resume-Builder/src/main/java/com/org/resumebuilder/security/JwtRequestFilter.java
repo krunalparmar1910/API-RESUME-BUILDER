@@ -18,12 +18,12 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 	private final UserService userService;
-	private final JwtUtil jwtUtil;
+	private final JwtTokenUtil jwtTokenUtil;
 	private final TokenBlacklistService tokenBlacklistService;
 
-	public JwtRequestFilter(UserService userService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService) {
+	public JwtRequestFilter(UserService userService, JwtTokenUtil jwtTokenUtil, TokenBlacklistService tokenBlacklistService) {
 		this.userService = userService;
-		this.jwtUtil = jwtUtil;
+		this.jwtTokenUtil = jwtTokenUtil;
 		this.tokenBlacklistService = tokenBlacklistService;
 	}
 
@@ -41,13 +41,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 				filterChain.doFilter(request, response);
 				return;
 			}
-			username = jwtUtil.extractUsername(jwt);
+			username = jwtTokenUtil.extractUsername(jwt);
 		}
 
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 			UserDetails userDetails = this.userService.loadUserByUsername(username);
 
-			if (jwtUtil.validateToken(jwt, userDetails)) {
+			if (jwtTokenUtil.validateToken(jwt, userDetails)) {
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
 				usernamePasswordAuthenticationToken

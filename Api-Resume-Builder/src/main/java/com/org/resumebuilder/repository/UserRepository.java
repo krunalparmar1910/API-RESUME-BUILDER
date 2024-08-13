@@ -10,17 +10,16 @@ import com.org.resumebuilder.security.LoginUser;
 @Repository
 public interface UserRepository extends JpaRepository<LoginUser, Long> {
 
+	// for Login User
 	Optional<LoginUser> findByUsername(String username);
-
-	Optional<LoginUser> findByMobile(String username);
 
 	Optional<LoginUser> findByEmail(String username);
 
+	// for register user if exist or not!!
 	boolean existsByMobile(String mobile);
 
 	boolean existsByEmail(String email);
 
 	boolean existsByUsername(String username);
-
 
 }
