@@ -6,25 +6,26 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.org.resumebuilder.dto.CertificateDTO;
 import com.org.resumebuilder.dto.EducationDTO;
 import com.org.resumebuilder.dto.ProjectDTO;
 import com.org.resumebuilder.dto.ResumeBuilderDTO;
-import com.org.resumebuilder.dto.SkillsIntrestDTO;
+import com.org.resumebuilder.dto.SkillsInterestDTO;
 import com.org.resumebuilder.dto.WorkExperienceDTO;
 import com.org.resumebuilder.exception.ResourceNotFoundException;
 import com.org.resumebuilder.model.Certificate;
 import com.org.resumebuilder.model.Education;
 import com.org.resumebuilder.model.Project;
 import com.org.resumebuilder.model.ResumeBuilder;
-import com.org.resumebuilder.model.SkillsIntrest;
+import com.org.resumebuilder.model.SkillsInterest;
 import com.org.resumebuilder.model.WorkExperience;
 import com.org.resumebuilder.repository.CertificateRepository;
 import com.org.resumebuilder.repository.EducationRepository;
 import com.org.resumebuilder.repository.ProjectRepository;
 import com.org.resumebuilder.repository.ResumeBuilderRepository;
-import com.org.resumebuilder.repository.SkillsIntrestRepository;
+import com.org.resumebuilder.repository.SkillsInterestRepository;
 import com.org.resumebuilder.repository.WorkExperienceRepository;
 
 @Service
@@ -43,7 +44,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	private ProjectRepository projectRepository;
 
 	@Autowired
-	private SkillsIntrestRepository skillsIntrestRepository;
+	private SkillsInterestRepository skillsInterestRepository;
 
 	@Autowired
 	private WorkExperienceRepository workExperienceRepository;
@@ -56,6 +57,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public List<ResumeBuilderDTO> getAllUsers() {
 		List<ResumeBuilder> all = resumeBuilderRepository.findAll();
 		List<ResumeBuilderDTO> resumeBuilderDTOs = all.stream().map(resumeBuildObj -> {
@@ -77,13 +79,13 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 					.collect(Collectors.toList());
 			resumeBuilderDTO.setCertificateDTO(certificateDTOs);
 
-			// SkillsIntrest entities to SkillsIntrestDTOs
-			List<SkillsIntrestDTO> skillsIntrestDTOs = resumeBuildObj.getSkillsIntrest().stream()
-					.map(a -> skillsIntrestRepository.findById(a.getId())
-							.map(skillsIntrest -> modelMapper.map(skillsIntrest, SkillsIntrestDTO.class))
-							.orElseThrow(() -> new RuntimeException("SkillsIntrest not found")))
+			// SkillsInterest entities to SkillsInterestDTOs
+			List<SkillsInterestDTO> skillsInterestDTOs = resumeBuildObj.getSkillsInterest().stream()
+					.map(a -> skillsInterestRepository.findById(a.getId())
+							.map(skillsInterest -> modelMapper.map(skillsInterest, SkillsInterestDTO.class))
+							.orElseThrow(() -> new RuntimeException("SkillsInterest not found")))
 					.collect(Collectors.toList());
-			resumeBuilderDTO.setSkillsIntrestDTO(skillsIntrestDTOs);
+			resumeBuilderDTO.setSkillsInterestDTO(skillsInterestDTOs);
 
 			// WorkExperience entities to WorkExperienceDTOs
 			List<WorkExperienceDTO> workExperienceDTOs = resumeBuildObj.getWorkExperience().stream()
@@ -118,9 +120,10 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO findById(Long id) {
 		ResumeBuilder resumeBuildObj = resumeBuilderRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Resume not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Resume not found"));
 
 		// Map ResumeBuilder to ResumeBuilderDTO
 		ResumeBuilderDTO resumeBuilderDTO = modelMapper.map(resumeBuildObj, ResumeBuilderDTO.class);
@@ -141,19 +144,19 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 				.collect(Collectors.toList());
 		resumeBuilderDTO.setCertificateDTO(certificateDTOs);
 
-		// SkillsIntrest entities to SkillsIntrestDTOs
-		List<SkillsIntrestDTO> skillsIntrestDTOs = resumeBuildObj.getSkillsIntrest().stream()
-				.map(a -> skillsIntrestRepository.findById(a.getId())
-						.map(skillsIntrest -> modelMapper.map(skillsIntrest, SkillsIntrestDTO.class))
-						.orElseThrow(() -> new RuntimeException("SkillsIntrest not found")))
+		// Skills & Interest entities to SkillsInterestDTOs
+		List<SkillsInterestDTO> skillsInterestDTOs = resumeBuildObj.getSkillsInterest().stream()
+				.map(a -> skillsInterestRepository.findById(a.getId())
+						.map(skillsInterest -> modelMapper.map(skillsInterest, SkillsInterestDTO.class))
+						.orElseThrow(() -> new RuntimeException("Skills and Interest not found")))
 				.collect(Collectors.toList());
-		resumeBuilderDTO.setSkillsIntrestDTO(skillsIntrestDTOs);
+		resumeBuilderDTO.setSkillsInterestDTO(skillsInterestDTOs);
 
 		// WorkExperience entities to WorkExperienceDTOs
 		List<WorkExperienceDTO> workExperienceDTOs = resumeBuildObj.getWorkExperience().stream()
 				.map(a -> workExperienceRepository.findById(a.getId())
 						.map(workExperience -> modelMapper.map(workExperience, WorkExperienceDTO.class))
-						.orElseThrow(() -> new RuntimeException("WorkExperience not found")))
+						.orElseThrow(() -> new RuntimeException("Work Experience not found")))
 				.collect(Collectors.toList());
 		resumeBuilderDTO.setWorkExperienceDTO(workExperienceDTOs);
 
@@ -224,15 +227,15 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 					.collect(Collectors.toList());
 		}
 
-		List<SkillsIntrestDTO> listOfSkillsIntrests = null;
-		if (resumeBuilderDTO.getSkillsIntrestDTO() != null) {
-			List<SkillsIntrest> skillsIntrests = resumeBuilderDTO.getSkillsIntrestDTO().stream().map(dto -> {
-				SkillsIntrest skillsIntrest = modelMapper.map(dto, SkillsIntrest.class);
-				skillsIntrest.setResumeBuilderId(resumeBuilderId);
-				return skillsIntrest;
+		List<SkillsInterestDTO> listOfSkillsInterests = null;
+		if (resumeBuilderDTO.getSkillsInterestDTO() != null) {
+			List<SkillsInterest> skillsInterests = resumeBuilderDTO.getSkillsInterestDTO().stream().map(dto -> {
+				SkillsInterest skillsInterest = modelMapper.map(dto, SkillsInterest.class);
+				skillsInterest.setResumeBuilderId(resumeBuilderId);
+				return skillsInterest;
 			}).collect(Collectors.toList());
-			List<SkillsIntrest> savedSkillsIntrests = skillsIntrestRepository.saveAll(skillsIntrests);
-			listOfSkillsIntrests = savedSkillsIntrests.stream().map(e -> modelMapper.map(e, SkillsIntrestDTO.class))
+			List<SkillsInterest> savedSkillsInterests = skillsInterestRepository.saveAll(skillsInterests);
+			listOfSkillsInterests = savedSkillsInterests.stream().map(e -> modelMapper.map(e, SkillsInterestDTO.class))
 					.collect(Collectors.toList());
 		}
 
@@ -253,7 +256,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		resultDTO.setCertificateDTO(listOfCertificates);
 		resultDTO.setEducationDTO(listOfEducations);
 		resultDTO.setProjectDTO(listOfProjects);
-		resultDTO.setSkillsIntrestDTO(listOfSkillsIntrests);
+		resultDTO.setSkillsInterestDTO(listOfSkillsInterests);
 		resultDTO.setWorkExperienceDTO(listOfWorkExperiences);
 		return resultDTO;
 	}
@@ -269,6 +272,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 	 ********************************************************************************************/
 
 	@Override
+	@Transactional
 	public ResumeBuilderDTO updateResume(long id, ResumeBuilderDTO resumeBuilderDTO) {
 		// Find existing ResumeBuilder entity
 		ResumeBuilder existingResumeBuilder = resumeBuilderRepository.findById(id)
@@ -282,7 +286,8 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		List<CertificateDTO> listOfCertificates = updateCertificates(resumeBuilderDTO.getCertificateDTO(), id);
 		List<EducationDTO> listOfEducations = updateEducations(resumeBuilderDTO.getEducationDTO(), id);
 		List<ProjectDTO> listOfProjects = updateProjects(resumeBuilderDTO.getProjectDTO(), id);
-		List<SkillsIntrestDTO> listOfSkillsIntrests = updateSkillsIntrests(resumeBuilderDTO.getSkillsIntrestDTO(), id);
+		List<SkillsInterestDTO> listOfSkillsInterests = updateSkillsInterests(resumeBuilderDTO.getSkillsInterestDTO(),
+				id);
 		List<WorkExperienceDTO> listOfWorkExperiences = updateWorkExperiences(resumeBuilderDTO.getWorkExperienceDTO(),
 				id);
 
@@ -291,7 +296,7 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		resultDTO.setCertificateDTO(listOfCertificates);
 		resultDTO.setEducationDTO(listOfEducations);
 		resultDTO.setProjectDTO(listOfProjects);
-		resultDTO.setSkillsIntrestDTO(listOfSkillsIntrests);
+		resultDTO.setSkillsInterestDTO(listOfSkillsInterests);
 		resultDTO.setWorkExperienceDTO(listOfWorkExperiences);
 		return resultDTO;
 	}
@@ -336,18 +341,18 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 		return savedProjects.stream().map(e -> modelMapper.map(e, ProjectDTO.class)).collect(Collectors.toList());
 	}
 
-	private List<SkillsIntrestDTO> updateSkillsIntrests(List<SkillsIntrestDTO> skillsIntrestDTOs,
+	private List<SkillsInterestDTO> updateSkillsInterests(List<SkillsInterestDTO> skillsInterestDTOs,
 			long resumeBuilderId) {
-		if (skillsIntrestDTOs == null)
+		if (skillsInterestDTOs == null)
 			return null;
 
-		List<SkillsIntrest> skillsIntrests = skillsIntrestDTOs.stream().map(dto -> {
-			SkillsIntrest skillsIntrest = modelMapper.map(dto, SkillsIntrest.class);
-			skillsIntrest.setResumeBuilderId(resumeBuilderId);
-			return skillsIntrest;
+		List<SkillsInterest> skillsInterests = skillsInterestDTOs.stream().map(dto -> {
+			SkillsInterest skillsInterest = modelMapper.map(dto, SkillsInterest.class);
+			skillsInterest.setResumeBuilderId(resumeBuilderId);
+			return skillsInterest;
 		}).collect(Collectors.toList());
-		List<SkillsIntrest> savedSkillsIntrests = skillsIntrestRepository.saveAll(skillsIntrests);
-		return savedSkillsIntrests.stream().map(e -> modelMapper.map(e, SkillsIntrestDTO.class))
+		List<SkillsInterest> savedSkillsInterests = skillsInterestRepository.saveAll(skillsInterests);
+		return savedSkillsInterests.stream().map(e -> modelMapper.map(e, SkillsInterestDTO.class))
 				.collect(Collectors.toList());
 	}
 
@@ -372,8 +377,19 @@ public class ResumeBuilderServiceImpl implements IResumeBuilderService {
 
 	/* Delete Resume By Id *****/
 	@Override
+	@Transactional
 	public void deleteResumeBuilder(Long id) {
-		resumeBuilderRepository.deleteById(id);
+		if (!resumeBuilderRepository.existsById(id)) {
+			throw new ResourceNotFoundException("Resume not found with id " + id);
+		} else {
+			certificateRepository.deleteByResumeBuilderId(id);
+			educationRepository.deleteByResumeBuilderId(id);
+			projectRepository.deleteByResumeBuilderId(id);
+			skillsInterestRepository.deleteByResumeBuilderId(id);
+			workExperienceRepository.deleteByResumeBuilderId(id);
+			// Delete the resume builder
+			resumeBuilderRepository.deleteById(id);
+		}
 	}
 
 }
