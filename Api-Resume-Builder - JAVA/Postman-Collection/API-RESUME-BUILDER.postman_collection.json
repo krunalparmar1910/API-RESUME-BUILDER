@@ -9,6 +9,16 @@
 		{
 			"name": "GET ALL RESUME DATA",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM1ODIwMjIsImlhdCI6MTcyMzU0NTc5OH0.qVUFbHoWaQII7LXNil-42zxvsXL706ONpwMXGgP0lIQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -83,10 +93,20 @@
 		{
 			"name": "GET RESUME BY ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM0NzQ0OTcsImlhdCI6MTcyMzQzODQ5N30.duLj0h9iSC5HTfl0-qozbZ-HjBqnst4qXCuNH_ieIMM",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9091/api/resumeBuilder/resumeById/68",
+					"raw": "http://localhost:9091/api/resumeBuilder/resumeById/85",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -96,7 +116,7 @@
 						"api",
 						"resumeBuilder",
 						"resumeById",
-						"68"
+						"85"
 					]
 				}
 			},
@@ -153,11 +173,21 @@
 		{
 			"name": "CREATE RESUME",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM5Nzk0NjgsImlhdCI6MTcyMzg5MzA2OH0._Fe_RcdIYGIGyXm7m0jRT9kZqiGPtJQoAFc_mVk4yAc",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Deep Chavda\",\r\n    \"email\": \"deep.c@example.com\",\r\n    \"phone\": \"+91 9842358122\",\r\n    \"address\": \"Jesar\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"Mearn Full Stack Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"instituteName\": \"GEC Ahmedabad\",\r\n            \"degree\": \"BE\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        },\r\n        {\r\n            \"instituteName\": \"GPG\",\r\n            \"degree\": \"Dimploma in computer enginnering\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"certificateTitle\": \"Full Stack Web Development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"certificateTitle\": \"php web development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"certificateTitle\": \"cloud computing\",\r\n            \"issuingOrg\": \"Edx\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"projectTitle\": \"Shoes-ware Web Application\",\r\n            \"projectDescription\": \"provide all information of Shoes-ware.\"\r\n        },\r\n        {\r\n            \"projectTitle\": \"Payroll Management\",\r\n            \"projectDescription\": \"provide all employee Details information\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"skills\": \"PHP\",\r\n            \"interest\": \"cricket\"\r\n        },\r\n        {\r\n            \"skills\": \"JAVA\",\r\n            \"interest\": \"movies\"\r\n        },\r\n        {\r\n            \"skills\": \"React JS\",\r\n            \"interest\": \"travelling\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"designation\": \"Full Stack Developer\",\r\n            \"companyName\": \"Infosys\",\r\n            \"comStartDate\": \"2023-01-12\",\r\n            \"comEndDate\": \"2024-06-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        },\r\n        {\r\n            \"designation\": \"Team Lead Full Stack Developer\",\r\n            \"companyName\": \"Microsoft\",\r\n            \"comStartDate\": \"2024-06-12\",\r\n            \"comEndDate\": \"2024-07-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Smit Chavda\",\r\n    \"email\": \"deep.c@example.com\",\r\n    \"phone\": \"+91 9842358122\",\r\n    \"address\": \"Jesar\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"Mearn Full Stack Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"instituteName\": \"GEC Ahmedabad\",\r\n            \"degree\": \"BE\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        },\r\n        {\r\n            \"instituteName\": \"GPG\",\r\n            \"degree\": \"Dimploma in computer enginnering\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"certificateTitle\": \"Full Stack Web Development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"certificateTitle\": \"php web development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"certificateTitle\": \"cloud computing\",\r\n            \"issuingOrg\": \"Edx\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"projectTitle\": \"Shoes-ware Web Application\",\r\n            \"projectDescription\": \"provide all information of Shoes-ware.\"\r\n        },\r\n        {\r\n            \"projectTitle\": \"Payroll Management\",\r\n            \"projectDescription\": \"provide all employee Details information\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"skills\": \"PHP\",\r\n            \"interest\": \"cricket\"\r\n        },\r\n        {\r\n            \"skills\": \"JAVA\",\r\n            \"interest\": \"movies\"\r\n        },\r\n        {\r\n            \"skills\": \"React JS\",\r\n            \"interest\": \"travelling\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"designation\": \"Full Stack Developer\",\r\n            \"companyName\": \"Infosys\",\r\n            \"comStartDate\": \"2023-01-12\",\r\n            \"comEndDate\": \"2024-06-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        },\r\n        {\r\n            \"designation\": \"Team Lead Full Stack Developer\",\r\n            \"companyName\": \"Microsoft\",\r\n            \"comStartDate\": \"2024-06-12\",\r\n            \"comEndDate\": \"2024-07-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -240,11 +270,21 @@
 		{
 			"name": "UPDATE RESUME",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM1ODIwMjIsImlhdCI6MTcyMzU0NTc5OH0.qVUFbHoWaQII7LXNil-42zxvsXL706ONpwMXGgP0lIQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 70,\r\n    \"name\": \"Deep Chavda\",\r\n    \"email\": \"deep.c@example.com\",\r\n    \"phone\": \"+91 9842358122\",\r\n    \"address\": \"Jesar\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"Mearn Full Stack Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"id\": 91,\r\n            \"instituteName\": \"GEC Ahmedabad\",\r\n            \"degree\": \"BE\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        },\r\n        {\r\n            \"id\": 92,\r\n            \"instituteName\": \"GPG\",\r\n            \"degree\": \"Dimploma in computer enginnering\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"id\": 111,\r\n            \"certificateTitle\": \"Full Stack Web Development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 112,\r\n            \"certificateTitle\": \"php web development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 113,\r\n            \"certificateTitle\": \"cloud computing\",\r\n            \"issuingOrg\": \"Edx\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"id\": 93,\r\n            \"projectTitle\": \"Shoes-ware Web Application\",\r\n            \"projectDescription\": \"provide all information of Shoes-ware.\"\r\n        },\r\n        {\r\n            \"id\": 94,\r\n            \"projectTitle\": \"Payroll Management\",\r\n            \"projectDescription\": \"provide all employee Details information\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"id\": 92,\r\n            \"designation\": \"Full Stack Developer\",\r\n            \"companyName\": \"Infosys\",\r\n            \"comStartDate\": \"2023-01-12\",\r\n            \"comEndDate\": \"2024-06-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        },\r\n        {\r\n            \"id\": 93,\r\n            \"designation\": \"Team Lead Full Stack Developer\",\r\n            \"companyName\": \"Microsoft\",\r\n            \"comStartDate\": \"2024-06-12\",\r\n            \"comEndDate\": \"2024-07-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"id\": 86,\r\n            \"skills\": \"PHP\",\r\n            \"interest\": \"cricket\"\r\n        },\r\n        {\r\n            \"id\": 87,\r\n            \"skills\": \"JAVA\",\r\n            \"interest\": \"movies\"\r\n        },\r\n        {\r\n            \"id\": 88,\r\n            \"skills\": \"React JS\",\r\n            \"interest\": \"travelling\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"id\": 85,\r\n    \"name\": \"smit chavada\",\r\n    \"email\": \"deep.c@example.com\",\r\n    \"phone\": \"+91 9842358122\",\r\n    \"address\": \"Jesar\",\r\n    \"repoUrl\": \"www.repo.in\",\r\n    \"linkdinUrl\": \"www.linkdin.com\",\r\n    \"profileSummary\": \"Mearn Full Stack Developer\",\r\n    \"educationDTO\": [\r\n        {\r\n            \"id\": 116,\r\n            \"instituteName\": \"GEC Ahmedabad\",\r\n            \"degree\": \"BE\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        },\r\n        {\r\n            \"id\": 117,\r\n            \"instituteName\": \"GPG\",\r\n            \"degree\": \"Dimploma in computer enginnering\",\r\n            \"degStartDate\": \"2024-06-12\",\r\n            \"degEndDate\": \"2024-06-12\"\r\n        }\r\n    ],\r\n    \"certificateDTO\": [\r\n        {\r\n            \"id\": 148,\r\n            \"certificateTitle\": \"Full Stack Web Development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 149,\r\n            \"certificateTitle\": \"php web development\",\r\n            \"issuingOrg\": \"Courcera\"\r\n        },\r\n        {\r\n            \"id\": 150,\r\n            \"certificateTitle\": \"cloud computing\",\r\n            \"issuingOrg\": \"Edx\"\r\n        }\r\n    ],\r\n    \"projectDTO\": [\r\n        {\r\n            \"id\": 118,\r\n            \"projectTitle\": \"Shoes-ware Web Application\",\r\n            \"projectDescription\": \"provide all information of Shoes-ware.\"\r\n        },\r\n        {\r\n            \"id\": 119,\r\n            \"projectTitle\": \"Payroll Management\",\r\n            \"projectDescription\": \"provide all employee Details information\"\r\n        }\r\n    ],\r\n    \"workExperienceDTO\": [\r\n        {\r\n            \"id\": 117,\r\n            \"designation\": \"Full Stack Developer\",\r\n            \"companyName\": \"Infosys\",\r\n            \"comStartDate\": \"2023-01-12\",\r\n            \"comEndDate\": \"2024-06-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        },\r\n        {\r\n            \"id\": 118,\r\n            \"designation\": \"Team Lead Full Stack Developer\",\r\n            \"companyName\": \"Microsoft\",\r\n            \"comStartDate\": \"2024-06-12\",\r\n            \"comEndDate\": \"2024-07-12\",\r\n            \"workLocation\": \"Ahmedabad\"\r\n        }\r\n    ],\r\n    \"skillsInterestDTO\": [\r\n        {\r\n            \"id\": 123,\r\n            \"skills\": \"PHP\",\r\n            \"interest\": \"cricket\"\r\n        },\r\n        {\r\n            \"id\": 124,\r\n            \"skills\": \"JAVA\",\r\n            \"interest\": \"movies\"\r\n        },\r\n        {\r\n            \"id\": 125,\r\n            \"skills\": \"React JS\",\r\n            \"interest\": \"travelling\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,7 +292,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9091/api/resumeBuilder/updateResume/70",
+					"raw": "http://localhost:9091/api/resumeBuilder/updateResume/85",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -262,7 +302,7 @@
 						"api",
 						"resumeBuilder",
 						"updateResume",
-						"70"
+						"85"
 					]
 				}
 			},
@@ -330,16 +370,11 @@
 			"name": "DELETE RESUME BY ID",
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "password",
-							"value": "#KP2024",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "Krunal Parmar",
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM1ODIwMjIsImlhdCI6MTcyMzU0NTc5OH0.qVUFbHoWaQII7LXNil-42zxvsXL706ONpwMXGgP0lIQ",
 							"type": "string"
 						}
 					]
@@ -347,7 +382,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9091/api/resumeBuilder/deleteResume/32",
+					"raw": "http://localhost:9091/api/resumeBuilder/deleteResume/70",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -357,7 +392,7 @@
 						"api",
 						"resumeBuilder",
 						"deleteResume",
-						"32"
+						"70"
 					]
 				}
 			},
@@ -415,7 +450,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"krunal\",\r\n    \"password\": \"admin\",\r\n    \"mobile\": \"1234567890\",\r\n    \"email\": \"krunal@example.com\"\r\n}",
+					"raw": "{\r\n    \"username\": \"krunal P\",\r\n    \"email\": \"krunal1910@example.com\",\r\n    \"mobile\": \"9864542113\",\r\n    \"password\": \"admin@123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -445,7 +480,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"krunal\",\r\n    \"password\": \"admin\"\r\n}",
+					"raw": "{\r\n    \"username\": \"krunal1910@example.com\",\r\n    \"password\": \"admin@123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -463,6 +498,37 @@
 						"api",
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnVuYWwiLCJleHAiOjE3MjM0NzQ0OTcsImlhdCI6MTcyMzQzODQ5N30.duLj0h9iSC5HTfl0-qozbZ-HjBqnst4qXCuNH_ieIMM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"auth",
+						"logout"
 					]
 				}
 			},
