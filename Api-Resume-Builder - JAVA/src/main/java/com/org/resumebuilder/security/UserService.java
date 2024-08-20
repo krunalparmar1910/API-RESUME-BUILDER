@@ -31,9 +31,6 @@ public class UserService implements UserDetailsService {
 		} else if (userRepository.existsByEmail(user.getEmail())) {
 			throw new UserAlreadyExistsException("A user with this email already exists.");
 		}
-		// Validate and remove any spaces from the username
-		String username = validateUsername(user.getUsername());
-		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt password and set user status
 		user.setIsLoginUser(true);
 		userRepository.save(user); // Save the new user
@@ -55,16 +52,6 @@ public class UserService implements UserDetailsService {
 		} else {
 			return new User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority("USER")));
 		}
-	}
-
-	private String validateUsername(String username) {
-		// Replace any spaces in the username with underscores
-		String validatedUsername = username.replaceAll("\\s+", "_");
-
-		if (validatedUsername.contains(" ")) {
-			throw new IllegalArgumentException("Username contains invalid spaces that could not be replaced.");
-		}
-		return validatedUsername;
 	}
 
 }

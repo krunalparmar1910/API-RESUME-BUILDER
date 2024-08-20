@@ -21,7 +21,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	private final JwtTokenUtil jwtTokenUtil;
 	private final TokenBlacklistService tokenBlacklistService;
 
-	public JwtRequestFilter(UserService userService, JwtTokenUtil jwtTokenUtil, TokenBlacklistService tokenBlacklistService) {
+	public JwtRequestFilter(UserService userService, JwtTokenUtil jwtTokenUtil,
+			TokenBlacklistService tokenBlacklistService) {
 		this.userService = userService;
 		this.jwtTokenUtil = jwtTokenUtil;
 		this.tokenBlacklistService = tokenBlacklistService;
@@ -30,8 +31,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		final String authorizationHeader = request.getHeader("Authorization");
 
+		// Ignore Authentication while Register & Login
+		String requestURI = request.getRequestURI();
+		if (requestURI.equals("/api/auth/login") || requestURI.equals("/api/auth/register")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+
+		final String authorizationHeader = request.getHeader("Authorization");
 		String username = null;
 		String jwt = null;
 
