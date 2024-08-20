@@ -12,7 +12,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Configuration
 public class JwtTokenUtil {
 
-	private String secret = "KRUNAL PARMAR";
+	private String secret = "secret";
 
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
@@ -21,7 +21,7 @@ public class JwtTokenUtil {
 
 	private String createToken(Map<String, Object> claims, String subject) {
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date())
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
 				.signWith(SignatureAlgorithm.HS256, secret) // Ensure 'secret' is correctly defined
 				.compact();
 	}
